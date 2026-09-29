@@ -464,9 +464,9 @@ This project demonstrates practical experience with:
 
 ## 👩‍💻 Author
 
-**Khushi Choudhary**
+**Khushi**
 
-B.Tech – Electronics & Communication Engineering  
+B.Tech – Information Technology 
 SKIT Jaipur
 
 ---
