@@ -2,6 +2,15 @@
 
 A Python-based **Credit Card Fraud Detection and Transaction Risk Analytics System** that analyzes financial transactions, assigns risk scores using predefined fraud indicators, categorizes transactions into **Normal, Suspicious, and High Risk**, and provides an interactive dashboard for monitoring and investigation.
 
+## 🚀 Live Demo
+
+📊 **[Open FraudGuard Detection Dashboard](https://fraudguard-detection-dashboard.streamlit.app)**
+
+## 🌐 Project Links
+
+- 📊 **Live Dashboard:** https://fraudguard-detection-dashboard.streamlit.app
+- 💻 **Source Code:** https://github.com/khushichoudhary950/credit-card-fraud-detection
+
 ---
 
 ## 📌 Project Overview
@@ -20,7 +29,8 @@ The system:
 - Generates a processed transaction dataset
 - Runs automated tests using Pytest
 - Provides an interactive Streamlit dashboard
-- Can be integrated into a cloud-based CI/CD workflow
+- Supports cloud-based deployment
+- Includes CI/CD configuration for AWS CodeBuild
 
 ---
 
@@ -33,7 +43,7 @@ The main objectives of this project are:
 3. Categorize transactions into different risk levels.
 4. Provide an interactive dashboard for transaction analysis.
 5. Automate testing of the fraud detection pipeline.
-6. Prepare the project for cloud-based deployment and CI/CD integration.
+6. Prepare the project for cloud-based CI/CD integration.
 
 ---
 
@@ -62,7 +72,7 @@ The maximum possible score is **4**.
 | 2 | 🟡 Suspicious |
 | 3–4 | 🔴 High Risk |
 
-This approach provides a transparent and easy-to-understand fraud detection mechanism.
+This approach provides a transparent and explainable fraud detection mechanism.
 
 ---
 
@@ -106,6 +116,10 @@ The project includes an interactive **Streamlit dashboard** for analyzing transa
 
 The dashboard allows users to filter the dataset and investigate transactions interactively.
 
+### Dashboard Deployment
+
+The dashboard is deployed using **Streamlit Community Cloud** and is available through the live demo link above.
+
 ---
 
 ## 🏗️ Project Structure
@@ -129,6 +143,7 @@ credit-card-fraud-detection/
 ├── requirements.txt
 ├── buildspec.yml
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
@@ -144,7 +159,7 @@ credit-card-fraud-detection/
 
 - Pandas
 
-### Dashboard
+### Dashboard & Visualization
 
 - Streamlit
 - Plotly
@@ -164,30 +179,31 @@ credit-card-fraud-detection/
 - AWS CodeBuild
 - AWS CodePipeline
 - Amazon S3
+- Streamlit Community Cloud
 
 ---
 
 ## 🚀 Installation
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/khushichoudhary950/credit-card-fraud-detection.git
 ```
 
-### 2. Enter the project directory
+### 2. Enter the Project Directory
 
 ```bash
 cd credit-card-fraud-detection
 ```
 
-### 3. Create a virtual environment
+### 3. Create a Virtual Environment
 
 ```bash
 python3 -m venv venv
 ```
 
-### 4. Activate the virtual environment
+### 4. Activate the Virtual Environment
 
 #### macOS / Linux
 
@@ -201,10 +217,19 @@ source venv/bin/activate
 venv\Scripts\activate
 ```
 
-### 5. Install dependencies
+### 5. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
+```
+
+The required packages are:
+
+```text
+pandas
+pytest
+streamlit
+plotly
 ```
 
 ---
@@ -243,6 +268,10 @@ streamlit run output/dashboard.py
 
 The dashboard will open in your browser.
 
+Alternatively, you can use the deployed version:
+
+**[Open Live Dashboard](https://fraudguard-detection-dashboard.streamlit.app)**
+
 ---
 
 ## 🧪 Run Tests
@@ -262,6 +291,14 @@ The tests verify important parts of the system, including:
 - Risk score range
 - High-risk transaction detection
 - Valid transaction amounts
+
+The current test suite contains **8 automated tests**.
+
+Expected result:
+
+```text
+8 passed
+```
 
 ---
 
@@ -289,52 +326,50 @@ AWS CodeBuild
    └── Generate processed output
 ```
 
-This allows the fraud detection pipeline to be automatically executed when changes are introduced into the project.
+This structure allows the fraud detection pipeline to be executed automatically as part of a CI/CD workflow.
 
 ---
 
-## ☁️ AWS Integration
+## ☁️ Cloud Architecture
 
 The project is designed to support a cloud-based architecture using AWS services.
 
-Potential architecture:
-
 ```text
-              ┌─────────────────┐
-              │     GitHub      │
-              │ Source Control  │
-              └────────┬────────┘
-                       │
-                       ▼
-              ┌─────────────────┐
-              │  AWS CodePipeline│
-              │     CI/CD       │
-              └────────┬────────┘
-                       │
-                       ▼
-              ┌─────────────────┐
-              │  AWS CodeBuild  │
-              │ Build + Testing │
-              └────────┬────────┘
-                       │
-                       ▼
-              ┌─────────────────┐
-              │ Fraud Detection │
-              │    Pipeline     │
-              └────────┬────────┘
-                       │
-                       ▼
-              ┌─────────────────┐
-              │ Amazon S3 /     │
-              │ Output Storage  │
-              └─────────────────┘
+                 ┌─────────────────┐
+                 │     GitHub      │
+                 │ Source Control  │
+                 └────────┬────────┘
+                          │
+                          ▼
+                 ┌─────────────────┐
+                 │ AWS CodePipeline│
+                 │      CI/CD      │
+                 └────────┬────────┘
+                          │
+                          ▼
+                 ┌─────────────────┐
+                 │  AWS CodeBuild  │
+                 │ Build + Testing │
+                 └────────┬────────┘
+                          │
+                          ▼
+                 ┌─────────────────┐
+                 │ Fraud Detection │
+                 │    Pipeline     │
+                 └────────┬────────┘
+                          │
+                          ▼
+                 ┌─────────────────┐
+                 │ Amazon S3 /     │
+                 │ Output Storage  │
+                 └─────────────────┘
 ```
 
 ---
 
 ## 🔐 Risk Detection Example
 
-For example, suppose a transaction has:
+Suppose a transaction has:
 
 ```text
 Amount = ₹80,000
@@ -343,7 +378,7 @@ Transaction Hour = 2 AM
 Previous Transaction = ₹5,000
 ```
 
-The system evaluates:
+The system evaluates the transaction against the predefined rules:
 
 ```text
 Amount > 50,000
@@ -375,18 +410,12 @@ Risk Category = High Risk
 
 ## 🧪 Testing
 
-The project currently includes automated tests covering the main fraud detection pipeline.
+The project includes automated tests covering the main fraud detection pipeline.
 
-Example:
+Run:
 
 ```bash
 pytest
-```
-
-Expected result:
-
-```text
-8 passed
 ```
 
 The tests help ensure that changes to the detection pipeline do not break the existing functionality.
@@ -410,6 +439,10 @@ Pytest provides automated validation of the processing pipeline.
 ### CI/CD Ready
 
 The project contains a CodeBuild configuration for automated execution.
+
+### Cloud Deployment
+
+The dashboard is publicly deployed through Streamlit Community Cloud.
 
 ### Modular Structure
 
@@ -440,7 +473,7 @@ Possible future improvements include:
 - Authentication for the dashboard
 - Role-based access control
 - Real-time fraud monitoring
-- Deployment of the dashboard to a cloud environment
+- Cloud deployment using AWS infrastructure
 
 ---
 
@@ -458,6 +491,7 @@ This project demonstrates practical experience with:
 - Git and GitHub
 - CI/CD concepts
 - AWS cloud architecture
+- Cloud deployment
 - Software project organization
 
 ---
@@ -466,7 +500,7 @@ This project demonstrates practical experience with:
 
 **Khushi**
 
-B.Tech – Information Technology 
+B.Tech – Information Technology
 SKIT Jaipur
 
 ---
